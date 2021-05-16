@@ -1,11 +1,5 @@
 const books = [
-  new Book(
-    "Americana",
-    "Chimanda",
-    300,
-    "A young girl in a foriegn land",
-    false
-  ),
+  new Book("Americana", "Chimanda", 300, "A young girl in a foriegn land", false),
   new Book("Born Rich", "Rick Aderson", 234, "make money while young", true),
 ];
 
@@ -28,23 +22,40 @@ function getBooks() {
 
 function renderBook(book, ind) {
   const template = `<div class="card mb-3 me-3" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">${book.title}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">${book.author}</h6>
-            <p class="card-text">${book.summary}</p>
-            <p class="card-text">${book.pages}<span>Pages</span></p>
-            <button type="button" class="btn btn-info text-white card-link" 
-              id="toggle-${ind}" ${book.read ? "disabled" : ""}>${
-    book.read ? "Read" : "Mark as read"
+    <div class="card-body">
+        <h5 class="card-title">${book.title}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">${book.author}</h6>
+        <p class="card-text">${book.summary}</p>
+        <p class="card-text">${book.pages}<span>Pages</span></p>
+        <button type="button" class="btn btn-info text-white card-link" 
+          id="toggle-${ind}" ${book.read ? "disabled" : ""}>${
+  book.read ? "Read" : "Mark as read"
   }</button>
-            <button type="button" class="btn btn-danger text-white card-link" id="delete-${ind}">Delete</button>
-        </div>
-</div>`;
+        <button type="button" class="btn btn-danger text-white card-link" id="delete-${ind}">Delete</button>
+    </div>
+  </div>`;
   bookContainer.innerHTML += template;
 }
 
 document.addEventListener("click", (event) => {
-  if (event.target) {}
+  if (event.target && event.target.id) {
+    const [name, id] = event.target.id.split('-');
+    if (name == 'toggle') {
+      toggle(id)
+    } else if (name == 'delete') {
+      deleteBook(id)
+    }
+  }
 });
+
+function toggle(ind) {
+  books[ind].read = true;
+  getBooks();
+}
+
+function deleteBook(ind) {
+  books.splice(ind, 1);
+  getBooks();
+}
 
 getBooks();
