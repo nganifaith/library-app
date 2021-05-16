@@ -19,7 +19,7 @@ function Book(title, author, pages, summary, read) {
 
 function getBooks() {
     bookContainer.innerHTML = ''
-    books.forEach(book => renderBook(book))
+    books.forEach((book, ind) => renderBook(book, ind))
 }
 
 
@@ -30,18 +30,28 @@ function getBooks() {
 
 
 
-function renderBook(book) {
-    const template = `<div class="card" style="width: 18rem;">
+function renderBook(book, ind) {
+    const template = `<div class="card mb-3 me-3" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">${book.title}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">${book.author}</h6>
                 <p class="card-text">${book.summary}</p>
                 <p class="card-text">${book.pages}<span>Pages</span></p>
-                <button type="button" class="btn btn-info text-white card-link" ${book.read? 'disabled' : ''}>${book.read? 'Read' : 'Mark as read'}</button>
-                <button type="button" class="btn btn-danger text-white card-link">Delete</button>
+                <button type="button" class="btn btn-info text-white card-link" id="toggle-${ind}" ${book.read? 'disabled' : ''}
+                onclick = "toggleRead">${book.read? 'Read' : 'Mark as read'}</button>
+                <button type="button" class="btn btn-danger text-white card-link" id="delete-${ind}">Delete</button>
             </div>
 </div>`
     bookContainer.innerHTML += template
+        // document.getElementById(`toggle-${ind}`).onclick = () => {
+        //     book.read = true
+        //     console.log('Hello')
+        //     getBooks()
+        // }
 }
 
 getBooks()
+
+function toggleRead(e) {
+    console.log(e)
+}

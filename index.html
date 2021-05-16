@@ -12,33 +12,23 @@
     <header>
         <h2 class="bg-success text-white p-5 mb-3 text-center fw-bold">Book Club</h2>
     </header>
-    <section class="ps-3">
-        <div id='books'>
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Born A Crime</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Trevor Noah</h6>
-                    <p class="card-text">The book details Trevor Noah growing up in his native South Africa during the apartheid era. As the mixed-race son of a white father and a black mother, Noah himself was classified as a "coloured" in accordance to the apartheid system
-                        of racial classification. According to Noah, he stated that even under apartheid, he felt trouble fitting in because it was a crime "for [him] to be born as a mixed-race baby", hence the title of his book</p>
-                    <p class="card-text">200<span>Pages</span></p>
-                    <button type="button" class="btn btn-info text-white card-link">Mark as Read</button>
-                    <button type="button" class="btn btn-danger text-white card-link">Delete</button>
-                </div>
-            </div>
+    <section class="ps-3 container">
+        <div id='books' class="d-flex flex-wrap">
+            <!-- Add books here -->
         </div>
-    </section>
-    <button type="button" class="btn btn-info p-2 text-center m-5 w-75" id="add">Add Book</button>
-    <form action="" class="mx-3 px-5">
-        <label for="title" class="form-label">Book Title</label>
-        <input type="text" id="title" class="form-control">
-        <label for="author" class="form-label">Author</label>
-        <input type="text" id="author" class="form-control">
-        <label for="pages" class="form-label">Number of Pages</label>
-        <input type="number" id="pages" class="form-control">
-        <label for="summary" class="form-label">Book Summary</label>
-        <textarea name="summay" id="summary" class="form-control" placeholder="brief summary of book"></textarea>
-    </form>
 
+        <button type="button" class="btn btn-info p-2 text-center m-5 w-75" id="add">Add Book</button>
+        <form action="">
+            <label for="title" class="form-label">Book Title</label>
+            <input type="text" id="title" class="form-control">
+            <label for="author" class="form-label">Author</label>
+            <input type="text" id="author" class="form-control">
+            <label for="pages" class="form-label">Number of Pages</label>
+            <input type="number" id="pages" class="form-control">
+            <label for="summary" class="form-label">Book Summary</label>
+            <textarea name="summay" id="summary" class="form-control" placeholder="brief summary of book"></textarea>
+        </form>
+    </section>
     <script src="./index.js"></script>
 </body>
 
