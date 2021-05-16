@@ -15,11 +15,6 @@ function Book(title, author, pages, summary, read) {
   this.read = read;
 }
 
-function getBooks() {
-  bookContainer.innerHTML = "";
-  books.forEach((book, ind) => renderBook(book, ind));
-}
-
 function renderBook(book, ind) {
   const template = `<div class="card mb-3 me-3" style="width: 18rem;">
     <div class="card-body">
@@ -35,6 +30,11 @@ function renderBook(book, ind) {
     </div>
   </div>`;
   bookContainer.innerHTML += template;
+}
+
+function getBooks() {
+  bookContainer.innerHTML = "";
+  books.forEach((book, ind) => renderBook(book, ind));
 }
 
 document.addEventListener("click", (event) => {
