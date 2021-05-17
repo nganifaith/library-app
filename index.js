@@ -23,8 +23,8 @@ function renderBook(book, ind) {
         <p class="card-text">${book.summary}</p>
         <p class="card-text">${book.pages}<span>Pages</span></p>
         <button type="button" class="btn btn-info text-white card-link" 
-          id="toggle-${ind}" ${book.read ? "disabled" : ""}>${
-  book.read ? "Read" : "Mark as read"
+          id="toggle-${ind}" ${book.read ? 'disabled' : ''}>${
+  book.read ? 'Read' : 'Mark as read'
   }</button>
         <button type="button" class="btn btn-danger text-white card-link" id="delete-${ind}">Delete</button>
     </div>
@@ -33,11 +33,11 @@ function renderBook(book, ind) {
 }
 
 function getBooks() {
-  bookContainer.innerHTML = "";
+  bookContainer.innerHTML = '';
   books.forEach((book, ind) => renderBook(book, ind));
 }
 
-document.addEventListener("click", (event) => {
+document.addEventListener('click', (event) => {
   if (event.target && event.target.id) {
     const [name, id] = event.target.id.split('-');
     if (name == 'toggle') {
@@ -48,6 +48,21 @@ document.addEventListener("click", (event) => {
   }
 });
 
+addButton.addEventListener('click', () => {
+  addBookForm.classList.toggle('d-none')
+});
+
+addBookForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  let title = event.target.title.value;
+  let author = event.target.author.value;
+  let pages = event.target.pages.value;
+  let summary = event.target.summary.value;
+  addBook(title, author, pages, summary);
+  event.target.reset();
+
+});
+
 function toggle(ind) {
   books[ind].read = true;
   getBooks();
@@ -55,6 +70,11 @@ function toggle(ind) {
 
 function deleteBook(ind) {
   books.splice(ind, 1);
+  getBooks();
+}
+
+function addBook(title, author, pages, summary, read = false) {
+  books.push(new Book(title, author, pages, summary, read));
   getBooks();
 }
 
