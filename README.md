@@ -34,6 +34,10 @@ Knowledge about JS:
 - Click on the index.html file to open in your browser
 
 
+
+[Live site](https://nganifaith.github.io/library-app/)
+
+
 ## Author
 
 👤 **Ngani Faith**
