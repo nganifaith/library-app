@@ -3,6 +3,11 @@
 
 
 
+## App
+
+![screenshot](./assets/homepage.png)
+
+This is a simple library app. It gives the user the possibility to add, delete and mark as read on a book
 
 ## Built With
 
@@ -22,9 +27,12 @@ Knowledge about JS:
 - JS injection
 
 ## Setup
-- git clone:  [Github repo](https://github.com/denisdiaconu/TicTacToe.git)
-- cd repo-folder
-- start program:  Ruby bin/main.rb on your command line or terminal
+- git clone:  [Github repo](https://github.com/nganifaith/library-app.git)
+- cd repo-folder OR
+- Open folder in your file explorer/finder
+- Start program by running live server Or
+- Click on the index.html file to open in your browser
+
 
 ## Author
 
@@ -39,7 +47,7 @@ Knowledge about JS:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/denisdiaconu/TicTacToe/issues).
+Feel free to check the [issues page](https://github.com/nganifaith/library-app/issues).
 
 ## Show your support
 
