@@ -8,7 +8,7 @@ function Book(title, author, pages, summary, read) {
 
 const books = [
   new Book('Americana', 'Chimanda', 300, 'A young girl in a foriegn land', false),
-  new Book('Born Rich', "Rick Aderson", 234, 'make money while young', true),
+  new Book('Born Rich', 'Rick Aderson', 234, 'make money while young', true),
 ];
 
 const bookContainer = document.getElementById('books');
@@ -23,9 +23,7 @@ function renderBook(book, ind) {
         <p class="card-text">${book.summary}</p>
         <p class="card-text">${book.pages}<span>Pages</span></p>
         <button type="button" class="btn btn-info text-white card-link" 
-          id="toggle-${ind}" ${book.read ? 'disabled' : ''}>${
-  book.read ? 'Read' : 'Mark as read'
-  }</button>
+          id="toggle-${ind}" ${book.read ? 'disabled' : ''}>${book.read ? 'Read' : 'Mark as read'}</button>
         <button type="button" class="btn btn-danger text-white card-link" id="delete-${ind}">Delete</button>
     </div>
   </div>`;
@@ -37,15 +35,20 @@ function getBooks() {
   books.forEach((book, ind) => renderBook(book, ind));
 }
 
+function addBook(title, author, pages, summary, read = false) {
+  books.push(new Book(title, author, pages, summary, read));
+  getBooks();
+}
+
 document.addEventListener('click', (event) => {
   if (event.target && event.target.id) {
     const [name, id] = event.target.id.split('-');
-    if (name == 'toggle') {
+    if (name === 'toggle') {
       toggle(id)
-    } else if (name == 'delete') {
+    } else if (name === 'delete') {
       deleteBook(id)
-    }
-  }
+    };
+  };
 });
 
 addButton.addEventListener('click', () => {
@@ -54,13 +57,12 @@ addButton.addEventListener('click', () => {
 
 addBookForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  let title = event.target.title.value;
-  let author = event.target.author.value;
-  let pages = event.target.pages.value;
-  let summary = event.target.summary.value;
+  const title = event.target.title.value;
+  const author = event.target.author.value;
+  const pages = event.target.pages.value;
+  const summary = event.target.summary.value;
   addBook(title, author, pages, summary);
   event.target.reset();
-
 });
 
 function toggle(ind) {
@@ -70,11 +72,6 @@ function toggle(ind) {
 
 function deleteBook(ind) {
   books.splice(ind, 1);
-  getBooks();
-}
-
-function addBook(title, author, pages, summary, read = false) {
-  books.push(new Book(title, author, pages, summary, read));
   getBooks();
 }
 
