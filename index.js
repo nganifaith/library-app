@@ -40,19 +40,29 @@ function addBook(title, author, pages, summary, read = false) {
   getBooks();
 }
 
+function toggle(ind) {
+  books[ind].read = true;
+  getBooks();
+}
+
+function deleteBook(ind) {
+  books.splice(ind, 1);
+  getBooks();
+}
+
 document.addEventListener('click', (event) => {
   if (event.target && event.target.id) {
     const [name, id] = event.target.id.split('-');
     if (name === 'toggle') {
-      toggle(id)
+      toggle(id);
     } else if (name === 'delete') {
-      deleteBook(id)
-    };
-  };
+      deleteBook(id);
+    }
+  }
 });
 
 addButton.addEventListener('click', () => {
-  addBookForm.classList.toggle('d-none')
+  addBookForm.classList.toggle('d-none');
 });
 
 addBookForm.addEventListener('submit', (event) => {
@@ -64,15 +74,5 @@ addBookForm.addEventListener('submit', (event) => {
   addBook(title, author, pages, summary);
   event.target.reset();
 });
-
-function toggle(ind) {
-  books[ind].read = true;
-  getBooks();
-}
-
-function deleteBook(ind) {
-  books.splice(ind, 1);
-  getBooks();
-}
 
 getBooks();
