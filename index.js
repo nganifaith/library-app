@@ -23,7 +23,7 @@ function renderBook(book, ind) {
         <p class="card-text">${book.summary}</p>
         <p class="card-text">${book.pages}<span>Pages</span></p>
         <button type="button" class="btn btn-info text-white card-link" 
-          id="toggle-${ind}" ${book.read ? 'disabled' : ''}>${book.read ? 'Read' : 'Mark as read'}</button>
+          id="toggle-${ind}">${book.read ? 'Read' : 'Mark as read'}</button>
         <button type="button" class="btn btn-danger text-white card-link" id="delete-${ind}">Delete</button>
     </div>
   </div>`;
@@ -41,7 +41,11 @@ function addBook(title, author, pages, summary, read = false) {
 }
 
 function toggle(ind) {
-  books[ind].read = true;
+  if (books[ind].read === true) {
+    books[ind].read = false;
+  } else {
+    books[ind].read = true;
+  }
   getBooks();
 }
 
@@ -71,7 +75,8 @@ addBookForm.addEventListener('submit', (event) => {
   const author = event.target.author.value;
   const pages = event.target.pages.value;
   const summary = event.target.summary.value;
-  addBook(title, author, pages, summary);
+  const read = event.target.read.value;
+  addBook(title, author, pages, summary, read);
   event.target.reset();
 });
 
