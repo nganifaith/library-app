@@ -1,12 +1,3 @@
-const books = [
-  new Book("Americana", "Chimanda", 300, "A young girl in a foriegn land", false),
-  new Book("Born Rich", "Rick Aderson", 234, "make money while young", true),
-];
-
-const bookContainer = document.getElementById("books");
-const addButton = document.getElementById("add");
-const addBookForm = document.querySelector("form");
-
 function Book(title, author, pages, summary, read) {
   this.title = title;
   this.author = author;
@@ -14,6 +5,15 @@ function Book(title, author, pages, summary, read) {
   this.summary = summary;
   this.read = read;
 }
+
+const books = [
+  new Book('Americana', 'Chimanda', 300, 'A young girl in a foriegn land', false),
+  new Book('Born Rich', "Rick Aderson", 234, 'make money while young', true),
+];
+
+const bookContainer = document.getElementById('books');
+const addButton = document.getElementById('add');
+const addBookForm = document.querySelector('form');
 
 function renderBook(book, ind) {
   const template = `<div class="card mb-3 me-3" style="width: 18rem;">
